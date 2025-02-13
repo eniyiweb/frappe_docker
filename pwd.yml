@@ -5,7 +5,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -37,7 +37,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network    
+      - frappe_network    
     healthcheck:
       test:
         - CMD
@@ -58,7 +58,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -83,7 +83,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -108,7 +108,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -143,7 +143,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
 
   websocket:
     image: ${IMAGE_NAME}:${ERPNEXT_VERSION}
@@ -166,7 +166,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
 
   configurator:
     image: ${IMAGE_NAME}:${ERPNEXT_VERSION}
@@ -199,7 +199,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
 
   create-site:
     image: ${IMAGE_NAME}:${ERPNEXT_VERSION}
@@ -238,7 +238,7 @@ services:
       INSTALL_APP_ARGS: ${INSTALL_APP_ARGS}
       SITE_NAME: ${SITE_NAME}
     networks:
-      - dokploy-network
+      - frappe_network
 
   migration:
     image: ${IMAGE_NAME}:${ERPNEXT_VERSION}
@@ -260,7 +260,7 @@ services:
     volumes:
       - sites:/home/frappe/frappe-bench/sites
     networks:
-      - dokploy-network
+      - frappe_network
 
   redis-cache:
     deploy:
@@ -270,7 +270,7 @@ services:
     volumes:
       - redis-cache-data:/data
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -288,7 +288,7 @@ services:
     volumes:
       - redis-queue-data:/data
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -306,7 +306,7 @@ services:
     volumes:
       - redis-socketio-data:/data
     networks:
-      - dokploy-network
+      - frappe_network
     healthcheck:
       test:
         - CMD
@@ -322,3 +322,7 @@ volumes:
   redis-queue-data:
   redis-socketio-data:
   sites:
+
+networks:
+  frappe_network:
+    driver: bridge
