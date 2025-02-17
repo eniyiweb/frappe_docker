@@ -179,6 +179,8 @@ services:
     entrypoint: ["bash", "-c"]
     command:
       - >
+        bench get-app https://github.com/barathprathosh/opencart_integration.git;
+        bench --site $${SITE_NAME} install-app opencart_integration;
         [[ $${REGENERATE_APPS_TXT} == "1" ]] && ls -1 apps > sites/apps.txt;
         [[ -n `grep -hs ^ sites/common_site_config.json | jq -r ".db_host // empty"` ]] && exit 0;
         bench set-config -g db_host $$DB_HOST;
