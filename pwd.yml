@@ -269,6 +269,7 @@ services:
       restart_policy:
         condition: always
     image: redis:6.2-alpine
+    platform: linux/arm64
     volumes:
       - redis-cache-data:/data
     networks:
@@ -287,6 +288,7 @@ services:
       restart_policy:
         condition: always
     image: redis:6.2-alpine
+    platform: linux/arm64
     volumes:
       - redis-queue-data:/data
     networks:
@@ -305,6 +307,7 @@ services:
       restart_policy:
         condition: always
     image: redis:6.2-alpine
+    platform: linux/arm64
     volumes:
       - redis-socketio-data:/data
     networks:
@@ -319,7 +322,6 @@ services:
       retries: 3
 
 volumes:
-  db-data:
   redis-cache-data:
   redis-queue-data:
   redis-socketio-data:
